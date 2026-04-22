@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../src//services/api";
+import { getProducts } from "../src/services/api";
+import ProductCard  from '../components/ProductCard.jsx';
 
 function Home() {
 	const [products, setProducts] = useState([]);
@@ -11,18 +12,31 @@ function Home() {
 		});
 	}, []);
 
+	const grouped = products.reduce((acc, p) => {
+		if (!acc[p.category]) acc[p.category] = [];
+		acc[p.category].push(p);
+		return acc;
+	}, {});
+
 	return (
-		<>
 		<main className="pt-24">
 			{
-				products.map(p => (
-					<div key={p.id}> 
-						{p.name} - ₹{p.price}
+				Object.keys(grouped).map(category => (
+					<div key={category}>
+						<h2 className="text-3xl font-bond my-6 mx-6">
+							{category.toUpperCase()}
+						</h2>
+
+						<div className="grid grid-cols-4 gap-4 mx-6">
+							{grouped[category].map(p => (
+								<ProductCard key={p.id} product={p} />
+							))}
+						</div>
+						
 					</div>
 				))
 			}
 		</main>
-		</>
     );
 }
 
