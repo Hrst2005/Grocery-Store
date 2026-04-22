@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 function Navbar () {
 	return (
 		<>
-			<nav className="flex justify-between z-50 fixed w-full border-b-2 border-white items-center h-20">
+			<nav className="flex justify-between fixed z-50 w-full border-b-2 border-white items-center h-20 bg-black">
 				<div className="nav-left text-4xl p-4 text-shadow-white font-bold font-mono text-center select-none hover:opacity-80 transition">
 					<h2>For <span className="text-yellow-500">U</span></h2>
 				</div>
