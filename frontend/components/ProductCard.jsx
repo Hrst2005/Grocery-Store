@@ -1,16 +1,10 @@
 import { useState } from "react";
+import { useCart } from "../src/context/CartContext";
 
 function ProductCard({ product }) {
 
-  const [qty, setQty] = useState(0);
-  const increase = () => setQty(qty + 1);
-  const decrease = () => {
-    if (qty == 1) {
-      setQty(0); 
-    } else {
-      setQty(qty - 1);
-    }
-  };
+  const {orders, updateCart} = useCart();
+  const qty = orders.find(o => o.id === product.id)?.qty || 0;
 
   return (
     <div className="border border-slate-700 hover:border-yellow-500 hover:bg-linear-to-br from-yellow-700  flex flex-col p-3 rounded-xl">
@@ -41,17 +35,23 @@ function ProductCard({ product }) {
       ₹{product.price}
     </span>
 
-    {qty == 0 ? (
-      <button onClick={increase} className="bg-yellow-500 text-black text-xs px-3 py-1 rounded-md cursor-pointer">
+    {qty === 0 ? (
+      <button 
+        onClick={() => updateCart(product, "add")}
+        className="bg-yellow-500 text-black text-xs px-3 py-1 rounded-md cursor-pointer">
         Add
       </button>
     ) : (
       <div className="flex items-center gap-2 bg-yellow-500 text-black px-2 py-1 rounded-md text-sm select-none">
-        <button className="cursor-pointer font-bold hover:bg-yellow-400 rounded" onClick={decrease}>-</button>
+        <button 
+        className="cursor-pointer font-bold hover:bg-yellow-400 rounded" 
+        onClick={() => updateCart(product, "remove")}>-</button>
 
         <span>{qty}</span>
 
-        <button className="cursor-pointer font-bold hover:bg-yellow-400 rounded" onClick={increase}>+</button>
+        <button 
+        className="cursor-pointer font-bold hover:bg-yellow-400 rounded" 
+        onClick={() => updateCart(product, "add")}>+</button>
       </div>
     )}
     
