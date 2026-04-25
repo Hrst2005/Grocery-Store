@@ -1,7 +1,7 @@
 import { useCart } from "../src/context/CartContext";
 
 function Cart() {
-  const { orders, updateCart } = useCart();
+  const { orders, updateCart, clearCart } = useCart();
   // totals
   const subtotal = orders.reduce(
     (sum, item) => sum + item.price * item.qty,
@@ -22,6 +22,7 @@ function Cart() {
 
   const handleCheckout = () => {
     alert("Order placed. Thank you!");
+    clearCart();
   };
 
   return (
