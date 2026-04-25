@@ -1,3 +1,22 @@
-body {
-  
+/* Background animation */
+.animate-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background-color: #020617; /* black */
+  animation: bgPulse 3s ease-in-out infinite;
+}
+
+/* Toggle between black and dark blue */
+@keyframes bgPulse {
+  0% {
+    background-color: #020617;
+  }
+  50% {
+    background-color: #0f172a; /* dark blue */
+  }
+  100% {
+    background-color: #020617;
+  }
 }
