@@ -28,12 +28,12 @@ function Cart() {
   return (
     <div className="pt-24 px-6 text-white min-h-screen">
 
-      <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
+      <h1 className="text-2xl font-bold mb-6"></h1>
 
       {/* Empty Cart */}
       {orders.length === 0 ? (
         <div className="text-center text-gray-400 mt-20">
-          Your cart is empty 🛒
+          <h1>Your cart is empty🛒</h1>
         </div>
       ) : (
         <>

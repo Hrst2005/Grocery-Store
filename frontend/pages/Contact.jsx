@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-
 const Contact = () => {
   const [status, setStatus] = useState("");
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setStatus("Thanks for reaching out! We'll get back to you soon.");
     e.target.reset();
   };
-
   return (
     <div className="pt-28 pb-12 px-6 text-white min-h-screen bg-black flex flex-col items-center">
       <div className="max-w-4xl w-full">
@@ -46,14 +43,14 @@ const Contact = () => {
               type="email" 
               placeholder="Email Address" 
               className="w-full p-3 bg-black rounded-lg border border-slate-700 focus:border-yellow-500 outline-none" 
-              required 
+           required 
             />
-            <textarea 
+        <textarea 
               placeholder="How can we help?" 
-              rows="4" 
+             rows="4" 
               className="w-full p-3 bg-black rounded-lg border border-slate-700 focus:border-yellow-500 outline-none" 
               required
-            ></textarea>
+         ></textarea>
             <button 
               type="submit" 
               className="w-full bg-yellow-500 text-black font-bold py-3 rounded-lg hover:bg-yellow-400 transition duration-300"
@@ -67,5 +64,4 @@ const Contact = () => {
     </div>
   );
 };
-
 export default Contact;
